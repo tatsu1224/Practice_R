@@ -21,7 +21,7 @@ library(tidyverse)
 url = "https://www.salesanalytics.co.jp/wpv6"
 df_diamond = read_csv(url) 
 skim(df_diamond)
-dfSummary(df_diamond) %>% view()
+summarytools::view(dfSummary(df_diamond))
 
 set.seed(100)
 trainNum <- createDataPartition(df_diamond$price,p=0.8,list=FALSE)
