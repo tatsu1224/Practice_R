@@ -39,7 +39,7 @@ df_test <- df_diamond[-trainNum,]
 y_test <- df_test[,1]
 x_test <- df_test[,-1]
 
-help("preProcess")
+#help("preProcess")
 #欠測値の補完（k-近傍法）
 missingdata_model <- preProcess(as.data.frame(x_train),method='knnImpute')
 x_train <- predict(missingdata_model,newdata = x_train)
@@ -54,10 +54,12 @@ x_test <- predict(range_model, newdata = x_test)
 dummies_model <- dummyVars(~.,data = x_train, fullRank=TRUE)
 x_train <- data.frame(predict(dummies_model, newdata = x_train))
 x_test <- data.frame(predict(dummies_model, newdata = x_test))
+
 #一旦確認
 skim(x_train)
 skim(x_test)
-help(train)
+#help(train)
+
 #ロバスト線形回帰
 model_rlm <- train(
   price ~ .,
